@@ -33,9 +33,14 @@ describe("default matchers with JEST", () => {
     // expect(result).toEqual("Hello World");
     expect({ name: "Carlos Alcaraz" }).toEqual({ name: "Alcaraz" });
   });
-  fit("tests for toContain matcher", () => {
+  it("tests for toContain matcher", () => {
     // can check for containment in a string or an array
-    expect("Good Morning").toContain("Morning");
-    //  expect([1, 2, 3, 4]).toContain(3);
+    // expect("Good Morning").toContain("Morning");
+    expect([1, 2, 3, 4]).not.toContain(30);
+  });
+  fit("tests for toMatch matcher", () => {
+    // can check for containment in a string or an array
+    // expect("Good Morning").toContain("Morning");
+    expect("Javascript Library").toMatch(/javascript/i);
   });
 });
