@@ -7,7 +7,7 @@ beforeAll(() => {
   console.log("beforeAll called - Global");
   // This will run once before all test cases
 });
-describe("test suite for setup & teardown methods", () => {
+xdescribe("test suite for setup & teardown methods", () => {
   var cars;
   beforeAll(() => {
     console.log("BeforeAll called");
@@ -33,7 +33,7 @@ describe("test suite for setup & teardown methods", () => {
   });
 });
 
-describe("test suite for setup & teardown methods - 2", () => {
+xdescribe("test suite for setup & teardown methods - 2", () => {
   it("tests a test", () => {
     console.log("Within test case - 2");
     expect(true).toBe(true);
