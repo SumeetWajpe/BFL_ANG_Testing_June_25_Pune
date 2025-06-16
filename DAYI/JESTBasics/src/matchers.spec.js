@@ -38,9 +38,13 @@ describe("default matchers with JEST", () => {
     // expect("Good Morning").toContain("Morning");
     expect([1, 2, 3, 4]).not.toContain(30);
   });
-  fit("tests for toMatch matcher", () => {
+  it("tests for toMatch matcher", () => {
     // can check for containment in a string or an array
     // expect("Good Morning").toContain("Morning");
     expect("Javascript Library").toMatch(/javascript/i);
+  });
+  fit("tests the toCloseTo() matcher", () => {
+    // expect(3).toBeCloseTo(2.9); // fails - promixty
+    expect(3).toBeCloseTo(2.9999999);
   });
 });
