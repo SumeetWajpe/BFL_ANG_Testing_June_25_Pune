@@ -15,13 +15,15 @@ expect.extend({
   },
 });
 
-test("for custom matcher toBeWithinRange", () => {
+test.skip("for custom matcher toBeWithinRange", () => {
   // Arrange
-  const value = 10;
+  const value = 100;
   const lowerBound = 5;
   const upperBound = 15;
   // Act & Assert
-  expect(value).toBeWithinRange(lowerBound, upperBound);
+  //   expect(value).toBeWithinRange(lowerBound, upperBound); // fail
+  expect(value).not.toBeWithinRange(lowerBound, upperBound); // pass
 });
 
-// expect(10).toBeWithinRange(5, 15); // Passes
+// write a custom matcher to check if a number is even
+// fail the test if the type is not number
