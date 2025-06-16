@@ -1,6 +1,6 @@
 const axios = require("axios");
-function fetchPosts(id) {
+function fetchPostWithId(id) {
   return axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
 }
 
-module.exports = { fetchPosts };
+module.exports = { fetchPostWithId };
