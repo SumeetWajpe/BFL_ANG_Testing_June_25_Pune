@@ -1,3 +1,12 @@
+beforeEach(() => {
+  console.log("beforeEach called - Global");
+  // This will run before each test case
+});
+
+beforeAll(() => {
+  console.log("beforeAll called - Global");
+  // This will run once before all test cases
+});
 describe("test suite for setup & teardown methods", () => {
   var cars;
   beforeAll(() => {
@@ -13,7 +22,6 @@ describe("test suite for setup & teardown methods", () => {
   });
   it("should contain Mercedes as an item in cars array", () => {
     console.log("Within test case - Mercedes");
-
     expect(cars).toContain("Mercedes");
   });
   afterEach(() => {
@@ -22,5 +30,12 @@ describe("test suite for setup & teardown methods", () => {
   });
   afterAll(() => {
     console.log("AfterAll called");
+  });
+});
+
+describe("test suite for setup & teardown methods - 2", () => {
+  it("tests a test", () => {
+    console.log("Within test case - 2");
+    expect(true).toBe(true);
   });
 });
