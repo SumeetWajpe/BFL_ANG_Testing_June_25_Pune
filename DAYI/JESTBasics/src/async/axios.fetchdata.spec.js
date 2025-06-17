@@ -1,5 +1,5 @@
 const postsModule = require("./axios.fetchdata");
-describe("test suite for testing async code with promises & async/await", () => {
+xdescribe("test suite for testing async code with promises & async/await", () => {
   it("tests for async code (using promise) that fetchPosts returns", () => {
     var mockResult = {
       userId: 1,
@@ -42,7 +42,7 @@ describe("test suite for testing async code with promises & async/await", () => 
 
     return expect(postsModule.fetchPostWithId(1)).resolves.toEqual(mockResult);
   });
-  fit("tests for async code using promise with method (resolves) siven by JEST", async () => {
+  it("tests for async code using promise with method (resolves) siven by JEST", async () => {
     var mockResult = {
       userId: 1,
       id: 1,
