@@ -53,10 +53,15 @@ describe("test suite for testing App Component", () => {
   fit("should test if h1 tag is having title expression evaluates to as text content ", () => {
     // nativeElement -> returns a actual DOM tree [The underlying DOM element at the root of the component.]
     const fixture = TestBed.createComponent(AppComponent);
-    // const compInstance = fixture.componentInstance;
+    const compInstance = fixture.componentInstance;
     const debugElement = fixture.debugElement;
     fixture.detectChanges();
+
+    compInstance.title = "XYZ";
+    fixture.detectChanges();
     const h1 = debugElement.nativeElement.querySelector("h1.header");
-    expect(h1.textContent).toBe("pokedex-angular");
+    expect(h1.textContent).toBe("XYZ");
+
+    // expect(h1.textContent).toBe("pokedex-angular");
   });
 });
