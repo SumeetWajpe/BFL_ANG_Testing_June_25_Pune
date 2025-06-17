@@ -10,6 +10,7 @@ import { PokemonService } from "../../shared/services/pokemon.service";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { FormsModule } from "@angular/forms";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import { of } from "rxjs";
 
 describe("test suite for PokemonList Component", () => {
   let fixture: ComponentFixture<PokemonListComponent>;
@@ -35,9 +36,25 @@ describe("test suite for PokemonList Component", () => {
     fixture = TestBed.createComponent(PokemonListComponent);
     compInstance = fixture.componentInstance;
   });
-  fit("should test if DI framework creates  the service instance & its dependencies", () => {
+  it("should test if DI framework creates  the service instance & its dependencies", () => {
     let servInstance: PokemonService =
       fixture.debugElement.injector.get(PokemonService); // refers the DI framewrok instance
     expect(servInstance).toBeTruthy();
+  });
+  fit("mocks getPokemonData method (service)", () => {
+    // arrange
+    compInstance.pokemonCount = 2;
+    compInstance.pokemonList = [{ name: "pikachu" }];
+    let servInstance: PokemonService =
+      fixture.debugElement.injector.get(PokemonService); // refers the DI framewrok instance
+
+    jest
+      .spyOn(servInstance, "getPokemonData")
+      .mockReturnValue(of({ count: 2, results: [{ name: "pikachu" }] }));
+    // act
+    compInstance.getPokemonList();
+
+    // assert
+    expect(servInstance.getPokemonData).toHaveBeenCalled();
   });
 });
