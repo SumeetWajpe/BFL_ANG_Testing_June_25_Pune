@@ -55,9 +55,8 @@ describe("test suite for testing App Component", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const compInstance = fixture.componentInstance;
     const debugElement = fixture.debugElement;
-    fixture.detectChanges();
-
-    compInstance.title = "XYZ";
+    fixture.detectChanges(); // could be omitted (just for undersatnding)
+    compInstance.title = "XYZ"; // this could happen on a click of a button / response from a service
     fixture.detectChanges();
     const h1 = debugElement.nativeElement.querySelector("h1.header");
     expect(h1.textContent).toBe("XYZ");
