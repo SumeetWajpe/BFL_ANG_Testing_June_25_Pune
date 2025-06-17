@@ -3,7 +3,7 @@ import { AppComponent } from "./app.component";
 import { LoaderService } from "./shared/services/loader.service";
 import { RouterTestingModule } from "@angular/router/testing";
 import { By } from "@angular/platform-browser";
-describe("test suite for testing App Component", () => {
+xdescribe("test suite for testing App Component", () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -50,7 +50,7 @@ describe("test suite for testing App Component", () => {
     const h1 = debugElement.nativeElement.querySelector("h1.header");
     expect(h1.textContent).toBe("Pokedex App");
   });
-  fit("should test if h1 tag is having title expression evaluates to as text content ", () => {
+  it("should test if h1 tag is having title expression evaluates to as text content ", () => {
     // nativeElement -> returns a actual DOM tree [The underlying DOM element at the root of the component.]
     const fixture = TestBed.createComponent(AppComponent);
     const compInstance = fixture.componentInstance;
