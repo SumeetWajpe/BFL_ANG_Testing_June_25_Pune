@@ -11,7 +11,7 @@ describe("test suite for testing App Component", () => {
     }).compileComponents(); // compile the css & html
   });
   it("should create App Component Instance ", () => {
-     // act
+    // act
     // create the component instance
     const fixture = TestBed.createComponent(AppComponent);
     const compInstance = fixture.componentInstance;
@@ -26,5 +26,14 @@ describe("test suite for testing App Component", () => {
     const fixture = TestBed.createComponent(AppComponent);
     const compInstance = fixture.componentInstance;
     expect(compInstance.title).toBe("pokedex-angular");
+  });
+
+  fit("should test if h1 tag is present in the template", () => {
+    // nativeElement -> returns a actual DOM tree
+    const fixture = TestBed.createComponent(AppComponent);
+    // const compInstance = fixture.componentInstance;
+    const debugElement = fixture.debugElement;
+    const el = debugElement.nativeElement.querySelector("h1.header");
+    expect(el).toBeTruthy();
   });
 });
