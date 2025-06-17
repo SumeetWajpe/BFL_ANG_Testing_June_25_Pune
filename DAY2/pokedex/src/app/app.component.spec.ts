@@ -29,7 +29,7 @@ describe("test suite for testing App Component", () => {
     expect(compInstance.title).toBe("pokedex-angular");
   });
 
-  fit("should test if h1 tag is present in the template", () => {
+  it("should test if h1 tag is present in the template", () => {
     // nativeElement -> returns a actual DOM tree [The underlying DOM element at the root of the component.]
     const fixture = TestBed.createComponent(AppComponent);
     // const compInstance = fixture.componentInstance;
@@ -41,5 +41,22 @@ describe("test suite for testing App Component", () => {
     const debugElement = fixture.debugElement;
     const h1 = debugElement.query(By.css("h1.header"));
     expect(h1).toBeTruthy();
+  });
+  xit("should test if h1 tag is having 'Podedex App' as text content ", () => {
+    // nativeElement -> returns a actual DOM tree [The underlying DOM element at the root of the component.]
+    const fixture = TestBed.createComponent(AppComponent);
+    // const compInstance = fixture.componentInstance;
+    const debugElement = fixture.debugElement;
+    const h1 = debugElement.nativeElement.querySelector("h1.header");
+    expect(h1.textContent).toBe("Pokedex App");
+  });
+  fit("should test if h1 tag is having title expression evaluates to as text content ", () => {
+    // nativeElement -> returns a actual DOM tree [The underlying DOM element at the root of the component.]
+    const fixture = TestBed.createComponent(AppComponent);
+    // const compInstance = fixture.componentInstance;
+    const debugElement = fixture.debugElement;
+    fixture.detectChanges();
+    const h1 = debugElement.nativeElement.querySelector("h1.header");
+    expect(h1.textContent).toBe("pokedex-angular");
   });
 });
