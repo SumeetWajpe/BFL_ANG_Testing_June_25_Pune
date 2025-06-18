@@ -1,4 +1,9 @@
-describe("test suite for lambdatest.io", () => {
+describe("test suite for lambdatest.io", function () {
+  before(function () {
+    cy.fixture("login.json").then(function (data) {
+      this.loginData = data;
+    });
+  });
   xit("should login successfully", () => {
     cy.visit(
       "https://ecommerce-playground.lambdatest.io/index.php?route=account/login",
@@ -12,7 +17,7 @@ describe("test suite for lambdatest.io", () => {
     );
   });
 
-  it("uses fixture to load the data", () => {
+  xit("uses fixture to load the data", () => {
     cy.fixture("login.json").then(data => {
       cy.visit(data.loginUrl);
       cy.get("#input-email").type(data.email);
@@ -20,5 +25,13 @@ describe("test suite for lambdatest.io", () => {
       cy.get("form > .btn").click();
       cy.url().should("eq", data.loginSuccessUrl);
     });
+  });
+  it("uses fixture to load the data (from before function)", function () {
+    console.log(this.loginData);
+    cy.visit(this.loginData.loginUrl);
+    cy.get("#input-email").type(this.loginData.email);
+    cy.get("#input-password").type(this.loginData.pwd);
+    cy.get("form > .btn").click();
+    cy.url().should("eq", this.loginData.loginSuccessUrl);
   });
 });
