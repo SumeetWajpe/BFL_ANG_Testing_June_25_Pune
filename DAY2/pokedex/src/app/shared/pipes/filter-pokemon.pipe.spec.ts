@@ -6,6 +6,7 @@ import { FilterPokemonPipe } from "./filter-pokemon.pipe";
 describe("test suite for Filter Pokemon pipe", () => {
   let pokemonServObj: PokemonService;
   let filterPokemonPipe: FilterPokemonPipe;
+  let pokemonArr: any;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       providers: [PokemonService],
@@ -13,11 +14,8 @@ describe("test suite for Filter Pokemon pipe", () => {
     });
     pokemonServObj = TestBed.inject(PokemonService);
     filterPokemonPipe = new FilterPokemonPipe(pokemonServObj);
-  });
-  fit("should return the input array as it is when no filter is applied", () => {
-    // arrange
     // mocked Result & input array
-    const pokemonArr = [
+    pokemonArr = [
       {
         id: 1,
         name: "Pikachu",
@@ -34,10 +32,25 @@ describe("test suite for Filter Pokemon pipe", () => {
         types: [{ type: { name: "fire" } }],
       },
     ];
+  });
+  it("should return the input array as it is when no filter is applied", () => {
+    // arrange
     const args = { searchText: "", types: [], genders: [] };
 
     // act
     const result = filterPokemonPipe.transform(pokemonArr, args);
     expect(result).toEqual(pokemonArr);
   });
+  fit("should return the filtered pokemon based on the searchText that is provided", () => {
+    const args = { searchText: "bu", types: [], genders: [] };
+    // act
+    const result = filterPokemonPipe.transform(pokemonArr, args);
+    expect(result).toEqual([
+      {
+        id: 2,
+        name: "Bulbasaur",
+        types: [{ type: { name: "grass" } }],
+      },
+    ]);
+});
 });
