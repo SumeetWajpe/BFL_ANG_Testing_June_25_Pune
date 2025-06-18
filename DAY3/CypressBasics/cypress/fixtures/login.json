@@ -1,0 +1,6 @@
+{
+  "email": "aniketadmin@gmail.com",
+  "pwd": "admin@1",
+  "loginUrl": "https://ecommerce-playground.lambdatest.io/index.php?route=account/login",
+  "loginSuccessUrl": "https://ecommerce-playground.lambdatest.io/index.php?route=account/account"
+}
