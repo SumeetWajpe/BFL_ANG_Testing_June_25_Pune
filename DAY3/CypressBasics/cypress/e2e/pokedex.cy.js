@@ -8,5 +8,12 @@ describe("test suite for pokedex app", () => {
     // cy.get("app-pokemon-item")
     //   .find(".pokemon-content")
     //   .should("have.length", 2);
+
+    cy.get("app-pokemon-item").find(".pokemon-content").first().click();
   });
+
+
+  // cy.url().should("eq","actualsuccessloginurl")
+
+
 });
