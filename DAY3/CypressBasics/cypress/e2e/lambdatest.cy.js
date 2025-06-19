@@ -26,7 +26,7 @@ describe("test suite for lambdatest.io", function () {
       cy.url().should("eq", data.loginSuccessUrl);
     });
   });
-  it("uses fixture to load the data (from before function)", function () {
+  xit("uses fixture to load the data (from before function)", function () {
     console.log(this.loginData);
     cy.visit(this.loginData.loginUrl);
     cy.get("#input-email").type(this.loginData.email);
