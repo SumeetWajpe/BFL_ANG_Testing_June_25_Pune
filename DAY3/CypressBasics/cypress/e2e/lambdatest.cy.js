@@ -1,3 +1,4 @@
+const LoginPage = require("../pages/login.pageobject");
 describe("test suite for lambdatest.io", function () {
   before(function () {
     cy.fixture("login.json").then(function (data) {
@@ -32,6 +33,12 @@ describe("test suite for lambdatest.io", function () {
     cy.get("#input-email").type(this.loginData.email);
     cy.get("#input-password").type(this.loginData.pwd);
     cy.get("form > .btn").click();
+    cy.url().should("eq", this.loginData.loginSuccessUrl);
+  });
+  it("should test for login functionality using LoginPage object", function () {
+    cy.visit(this.loginData.loginUrl);
+    const loginPage = new LoginPage();
+    loginPage.login();
     cy.url().should("eq", this.loginData.loginSuccessUrl);
   });
 });
