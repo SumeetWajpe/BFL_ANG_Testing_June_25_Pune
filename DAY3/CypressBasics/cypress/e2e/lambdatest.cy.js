@@ -38,7 +38,7 @@ describe("test suite for lambdatest.io", function () {
   it("should test for login functionality using LoginPage object", function () {
     cy.visit(this.loginData.loginUrl);
     const loginPage = new LoginPage();
-    loginPage.login();
+    loginPage.login(this.loginData.email, this.loginData.pwd);
     cy.url().should("eq", this.loginData.loginSuccessUrl);
   });
 });

@@ -4,9 +4,9 @@ class LoginPage {
     userPwd: () => cy.get("#input-password"),
     loginBtn: () => cy.get("form > .btn"),
   };
-  login() {
-    this.elements.userEmail().type("aniketadmin@gmail.com");
-    this.elements.userPwd().type("admin@1");
+  login(email, pwd) {
+    this.elements.userEmail().type(email);
+    this.elements.userPwd().type(pwd);
     this.elements.loginBtn().click();
   }
 }
